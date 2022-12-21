@@ -22,11 +22,11 @@ const LoginForm: React.FC<Props> = ({}) => {
     } = useForm<ILoginForm>({
         resolver: yupResolver(loginSchema),
     });
-    const handleSumitLogin = (e: any) => {
-        console.log(e);
+    const handleSubmitLogin = (value: ILoginForm) => {
+        console.log(value);
     };
     return (
-        <LoginFormContainer onSubmit={handleSubmit(handleSumitLogin)}>
+        <LoginFormContainer onSubmit={handleSubmit(handleSubmitLogin)}>
             <LoginText>Login</LoginText>
             <InputWrapper>
                 <InputField

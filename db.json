@@ -1,5 +1,6 @@
 {
-    "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
     "tasks": [{ "id": 1, "title": "you need to clean the toilet" }],
-    "profile": { "name": "typicode" }
+    "users": [
+        { "id": 1, "username": "username1@gmail.com", "password": "123456", "token": "" }
+    ]
 }
