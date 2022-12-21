@@ -11,4 +11,6 @@ export const InputLabel = styled.label`
 export const ErrorMessage = styled.p`
     color: red;
     margin-left: 1.1111111111111112em;
+    text-shadow: 5px 5px 10px black;
+    font-weight: 700;
 `;

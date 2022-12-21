@@ -1,0 +1,5 @@
+{
+    "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
+    "tasks": [{ "id": 1, "title": "you need to clean the toilet" }],
+    "profile": { "name": "typicode" }
+}

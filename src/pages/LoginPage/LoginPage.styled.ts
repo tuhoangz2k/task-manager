@@ -1,4 +1,4 @@
-import images from 'assets/img';
+import { IMAGES } from '../../constants';
 import styled from 'styled-components';
 
 export const LoginPageWrap = styled.div`
@@ -8,7 +8,7 @@ export const LoginPageWrap = styled.div`
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background: url(https://khoinguonsangtao.vn/wp-content/uploads/2022/08/background-dep-don-gian-ve-vu-tru-hd.jpg);
+    background: url(${IMAGES.backgroundUrl});
     background-repeat: no-repeat;
     background-size: cover;
 `;
