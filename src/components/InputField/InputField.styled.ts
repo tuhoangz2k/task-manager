@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const InputContainer = styled.div`
     width: 100% !important;
+    color: white;
 `;
 export const InputLabel = styled.label`
     display: block;

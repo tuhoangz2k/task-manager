@@ -7,9 +7,11 @@ import {
     Container,
     TabsStyled,
 } from './TaskBoard.styled';
-import { Input, Layout, Menu, theme } from 'antd';
+import { Input, Layout, Menu, theme, TabsProps } from 'antd';
 import { items } from './../../constants';
 import { tasksApi } from 'api/tasksApi';
+import TaskList from './components/TaskList';
+import Board from './components/Board';
 const { Header, Content, Footer } = Layout;
 type TaskBoardProps = {};
 
@@ -23,7 +25,6 @@ const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
             setData(res.data);
         })();
     }, []);
-    console.log(data);
     const isMobile = useMemo(() => {
         return window.innerWidth < 740;
     }, [widthDevice]);
@@ -46,6 +47,7 @@ const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
     const onChange = (key: string) => {
         console.log(key);
     };
+    console.log(data);
     return (
         <>
             <TaskBoardWrapper>
@@ -93,18 +95,18 @@ const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
                                     items={[
                                         {
                                             label: `List`,
-                                            key: '1',
-                                            children: <div>this is tab 1</div>,
+                                            key: 'ListTask',
+                                            children: <TaskList data={data} />,
                                         },
                                         {
-                                            label: `Grid`,
-                                            key: '2',
-                                            children: <div>this is tab 2</div>,
+                                            label: `Board`,
+                                            key: 'Board',
+                                            children: <Board />,
                                         },
                                         {
                                             label: `Calender`,
-                                            key: '3',
-                                            children: <div>this is tab 3</div>,
+                                            key: 'calender',
+                                            children: <TaskList data={data} />,
                                         },
                                     ]}
                                 />

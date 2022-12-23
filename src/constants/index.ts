@@ -1,4 +1,6 @@
 import React from 'react';
+import TaskList from '../pages/TaskBoard/components/TaskList';
+
 import {
     UploadOutlined,
     VideoCameraOutlined,
@@ -27,4 +29,22 @@ export const items: Array<MenuItems> = [
     { label: 'User', key: 2, icon: React.createElement(UserOutlined) },
     { label: 'Upload', key: 3, icon: React.createElement(FileAddOutlined) },
     { label: 'Upload', key: 4, icon: React.createElement(FileAddOutlined) },
+];
+
+export const TabsItems = [
+    {
+        label: `List`,
+        key: '1',
+        children: TaskList,
+    },
+    {
+        label: `Grid`,
+        key: '2',
+        children: TaskList,
+    },
+    {
+        label: `Calender`,
+        key: '3',
+        children: TaskList,
+    },
 ];

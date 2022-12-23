@@ -12,4 +12,12 @@ export interface IUser {
 export interface ITaskList {
     title: string;
 }
+type Priority = 'medium' | 'low' | 'high';
+export interface ITaskTable {
+    id: string | number;
+    title: string;
+    priority: Priority;
+    status: string;
+    progress: number;
+}
 export type TokenType = Pick<IUser, 'username' | 'password'>;
