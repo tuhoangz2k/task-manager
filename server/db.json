@@ -1,0 +1,39 @@
+{
+    "tasks": [
+        {
+            "id": "task-1",
+            "title": "you need to clean the toilet",
+            "memberId": [1],
+            "priority": "low",
+            "status": "todo",
+            "progress": 50,
+            "plannedEnd": 1672272000000,
+            "description": "Top-bottom structure is conform with the top-bottom viewing habit, it's a classical navigation pattern of websites. This pattern demonstrates efficiency in the main workarea, while using some vertical space. And because the horizontal space of the navigation is limited, this pattern is not suitable for cases when the first level navigation contains many elements or links."
+        },
+        {
+            "id": "task-2",
+            "title": "Build library application",
+            "memberId": [2],
+            "priority": "high",
+            "status": "completed",
+            "progress": 80,
+            "plannedEnd": 1672272000000,
+            "description": "Top-bottom structure is conform with the top-bottom viewing habit, it's a classical navigation pattern of websites. This pattern demonstrates efficiency in the main workarea, while using some vertical space. And because the horizontal space of the navigation is limited, this pattern is not suitable for cases when the first level navigation contains many elements or links."
+        },
+        {
+            "id": "task-3",
+            "title": "Create some facebook API",
+            "memberId": [3],
+            "priority": "medium",
+            "status": "notStart",
+            "progress": 10,
+            "plannedEnd": 1672272000000,
+            "description": "Top-bottom structure is conform with the top-bottom viewing habit, it's a classical navigation pattern of websites. This pattern demonstrates efficiency in the main workarea, while using some vertical space. And because the horizontal space of the navigation is limited, this pattern is not suitable for cases when the first level navigation contains many elements or links."
+        }
+    ],
+    "users": [
+        { "id": 1, "username": "username1@gmail.com", "password": "123456" },
+        { "id": 2, "username": "username2@gmail.com", "password": "123456" },
+        { "id": 3, "username": "username3@gmail.com", "password": "123456" }
+    ]
+}

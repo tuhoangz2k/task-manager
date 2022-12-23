@@ -1,6 +1,0 @@
-{
-    "tasks": [{ "id": 1, "title": "you need to clean the toilet" }],
-    "users": [
-        { "id": 1, "username": "username1@gmail.com", "password": "123456", "token": "" }
-    ]
-}

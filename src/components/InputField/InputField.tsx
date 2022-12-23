@@ -5,7 +5,7 @@ import { Controller } from 'react-hook-form';
 type Props = {
     label?: string;
     id?: string;
-    prefix: React.ReactNode;
+    prefix?: React.ReactNode;
     placeholder: string;
     size: 'small' | 'middle' | 'large';
     name: string;
