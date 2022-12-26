@@ -1,4 +1,7 @@
 import React, { useEffect, useMemo, useState, ChangeEvent } from 'react';
+import { useAppSelector } from 'app/hooks';
+import { selectIsLogin } from 'features/userSlice';
+import { Navigate } from 'react-router-dom';
 import {
     ModalBoard,
     TaskBoardSider,
@@ -18,6 +21,7 @@ const { Option } = Select;
 type TaskBoardProps = {};
 
 const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
+    const isLogin = useAppSelector(selectIsLogin);
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [widthDevice, setWidthDevice] = useState(window.innerWidth);
     const [priority, setPriority] = useState('all');
@@ -64,6 +68,7 @@ const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
     const handlePriorityChange = (e: string) => {
         setPriority(e);
     };
+    if (!isLogin) return <Navigate to="/login" />;
 
     return (
         <>

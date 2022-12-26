@@ -11,10 +11,16 @@ import {
     LoginButton,
 } from './LoginForm.styled';
 import InputField from 'components/InputField';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { login, selectIsLogin } from 'features/userSlice';
+import { Navigate } from 'react-router-dom';
 
 type Props = {};
 
 const LoginForm: React.FC<Props> = ({}) => {
+    const isLogin = useAppSelector(selectIsLogin);
+
+    const dispatch = useAppDispatch();
     const {
         handleSubmit,
         control,
@@ -24,7 +30,10 @@ const LoginForm: React.FC<Props> = ({}) => {
     });
     const handleSubmitLogin = (value: ILoginForm) => {
         console.log(value);
+        dispatch(login(value));
+        // eslint-disable-next-line react-hooks/rules-of-hooks
     };
+    if (!!isLogin) return <Navigate to="/dashboard" />;
     return (
         <LoginFormContainer onSubmit={handleSubmit(handleSubmitLogin)}>
             <LoginText>Login</LoginText>
