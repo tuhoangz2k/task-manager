@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
-
+import React, { useEffect, useMemo, useState, ChangeEvent } from 'react';
 import {
     ModalBoard,
     TaskBoardSider,
@@ -7,17 +6,22 @@ import {
     Container,
     TabsStyled,
 } from './TaskBoard.styled';
-import { Input, Layout, Menu, theme, TabsProps } from 'antd';
+import { Input, Layout, Menu, theme, TabsProps, Select } from 'antd';
 import { items } from './../../constants';
 import { tasksApi } from 'api/tasksApi';
 import TaskList from './components/TaskList';
 import Board from './components/Board';
+import styled from 'styled-components';
 const { Header, Content, Footer } = Layout;
+const { Option } = Select;
+
 type TaskBoardProps = {};
 
 const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [widthDevice, setWidthDevice] = useState(window.innerWidth);
+    const [priority, setPriority] = useState('all');
+    const [searchInput, setSearchInput] = useState('');
     const [data, setData] = useState([]);
     useEffect(() => {
         (async () => {
@@ -25,6 +29,14 @@ const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
             setData(res.data);
         })();
     }, []);
+    const newData = useMemo(() => {
+        return data.filter(
+            (task: any) =>
+                (priority === 'all' || task.priority === priority) &&
+                task.title.includes(searchInput),
+        );
+    }, [data, priority, searchInput]);
+
     const isMobile = useMemo(() => {
         return window.innerWidth < 740;
     }, [widthDevice]);
@@ -42,12 +54,17 @@ const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
     };
 
     const onSearch = (value: string) => {
-        console.log(value);
+        setSearchInput(value);
     };
     const onChange = (key: string) => {
         console.log(key);
     };
     console.log(data);
+    console.log(newData);
+    const handlePriorityChange = (e: string) => {
+        setPriority(e);
+    };
+
     return (
         <>
             <TaskBoardWrapper>
@@ -96,7 +113,7 @@ const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
                                         {
                                             label: `List`,
                                             key: 'ListTask',
-                                            children: <TaskList data={data} />,
+                                            children: <TaskList data={newData} />,
                                         },
                                         {
                                             label: `Board`,
@@ -106,10 +123,34 @@ const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
                                         {
                                             label: `Calender`,
                                             key: 'calender',
-                                            children: <TaskList data={data} />,
+                                            // children: <TaskList data={data} />,
+                                            children: 'sa',
                                         },
                                     ]}
                                 />
+                                <Select
+                                    defaultValue="all"
+                                    style={{ width: 120 }}
+                                    onChange={handlePriorityChange}
+                                    options={[
+                                        {
+                                            value: 'all',
+                                            label: 'All',
+                                        },
+                                        {
+                                            value: 'low',
+                                            label: 'Low',
+                                        },
+                                        {
+                                            value: 'high',
+                                            label: 'High',
+                                        },
+                                        {
+                                            value: 'medium',
+                                            label: 'Medium',
+                                        },
+                                    ]}
+                                ></Select>
                             </Container>
                         </div>
                     </Content>

@@ -8,9 +8,15 @@ interface DataType {
     age: number;
     address: string;
     tags: string[];
+    test?: any;
 }
 
 const columns: ColumnsType<DataType> = [
+    {
+        title: 'id',
+        dataIndex: 'key',
+        key: 'anyway',
+    },
     {
         title: 'Name',
         dataIndex: 'name',
@@ -52,7 +58,7 @@ const columns: ColumnsType<DataType> = [
         key: 'action',
         render: (_, record) => (
             <Space size="middle">
-                <a>Invite {record.name}</a>
+                <a>Edit</a>
                 <a>Delete</a>
             </Space>
         ),
@@ -66,6 +72,7 @@ const data: DataType[] = [
         age: 32,
         address: 'New York No. 1 Lake Park',
         tags: ['nice', 'developer'],
+        test: '112',
     },
     {
         key: '2',
@@ -73,6 +80,7 @@ const data: DataType[] = [
         age: 42,
         address: 'London No. 1 Lake Park',
         tags: ['loser'],
+        test: '112',
     },
     {
         key: '3',

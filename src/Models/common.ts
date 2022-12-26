@@ -19,5 +19,8 @@ export interface ITaskTable {
     priority: Priority;
     status: string;
     progress: number;
+    tags: string[];
+    description?: string;
+    plannedEnd: number;
 }
 export type TokenType = Pick<IUser, 'username' | 'password'>;
