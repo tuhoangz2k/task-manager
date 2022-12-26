@@ -14,7 +14,6 @@ import { items } from './../../constants';
 import { tasksApi } from 'api/tasksApi';
 import TaskList from './components/TaskList';
 import Board from './components/Board';
-import styled from 'styled-components';
 const { Header, Content, Footer } = Layout;
 const { Option } = Select;
 
@@ -63,8 +62,6 @@ const TaskBoard: React.FC<TaskBoardProps> = ({}) => {
     const onChange = (key: string) => {
         console.log(key);
     };
-    console.log(data);
-    console.log(newData);
     const handlePriorityChange = (e: string) => {
         setPriority(e);
     };

@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Space, Table, Tag, Progress } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { ColumnTitle, TitleItem } from './TaskList.styled';
+import { ColumnTitle, FormWrap, ModalForm, TitleItem } from './TaskList.styled';
 import { ITaskTable } from 'Models';
+import { tasksApi } from 'api/tasksApi';
+import TaskForm from 'components/TaskForm';
 
 type Props = {
     data?: Array<ITaskTable>;
+};
+const handleDelete = async (id: string | number) => {
+    await tasksApi.deleteUserByid(id);
 };
 const columns: ColumnsType<ITaskTable> = [
     {
@@ -68,17 +73,30 @@ const columns: ColumnsType<ITaskTable> = [
         render: (_, record) => (
             <Space size="middle">
                 <a>Edit</a>
-                <a>Delete</a>
+                <a onClick={() => handleDelete(record.id)}>Delete</a>
             </Space>
         ),
     },
 ];
 
 const TaskList: React.FC<Props> = ({ data }) => {
+    const [isOpenForm, setIsOpenForm] = useState(false);
+    const handleOpenForm = (e: any) => {
+        setIsOpenForm(true);
+    };
     return (
-        <div>
-            <Table columns={columns} dataSource={data} />
-        </div>
+        <>
+            <div>
+                <Table columns={columns} dataSource={data} />
+            </div>
+            {isOpenForm && (
+                <ModalForm>
+                    <FormWrap>
+                        <TaskForm />
+                    </FormWrap>
+                </ModalForm>
+            )}
+        </>
     );
 };
 

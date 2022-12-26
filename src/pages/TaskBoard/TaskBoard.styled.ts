@@ -20,10 +20,12 @@ export const ModalBoard = styled.div`
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 0;
 `;
+
 export const TabsStyled = styled(Tabs)`
     width: 100%;
 `;
 
 export const Container = styled.div`
     display: flex;
+    overflow-x: scroll;
 `;

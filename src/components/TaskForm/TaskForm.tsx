@@ -1,92 +1,65 @@
 import React, { useState } from 'react';
-import {
-    Button,
-    Cascader,
-    DatePicker,
-    Form,
-    Input,
-    InputNumber,
-    Radio,
-    Select,
-    Switch,
-    TreeSelect,
-} from 'antd';
-
+import { Button, DatePicker, Form, Input, InputNumber, Select } from 'antd';
+import { ButtonWrap, FormStyled } from './TaskForm.styled';
+const { TextArea } = Input;
 type SizeType = Parameters<typeof Form>[0]['size'];
 
-type Props = {};
+type Props = {
+    task?: any;
+};
 
-const TaskForm: React.FC<Props> = ({}) => {
+const TaskForm: React.FC<Props> = ({ task }) => {
     const [componentSize, setComponentSize] = useState<SizeType | 'default'>('default');
-
-    const onFormLayoutChange = ({ size }: { size: SizeType }) => {
-        setComponentSize(size);
+    console.log();
+    const handleSubmit = (e: any) => {
+        // console.log(new Date(e.plannedEnd).getTime());
+        console.log(e);
     };
+    console.log(task);
     return (
-        <Form
-            onFinish={(value) => console.log(value)}
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 14 }}
-            layout="horizontal"
-            initialValues={{ size: componentSize }}
-            onValuesChange={onFormLayoutChange}
-            size={componentSize as SizeType}
-        >
-            <Form.Item label="Form Size" name="size">
-                <Radio.Group>
-                    <Radio.Button value="small">Small</Radio.Button>
-                    <Radio.Button value="default">Default</Radio.Button>
-                    <Radio.Button value="large">Large</Radio.Button>
-                </Radio.Group>
-            </Form.Item>
-            <Form.Item label="Input">
-                <Input />
-            </Form.Item>
-            <Form.Item label="Select">
-                <Select>
-                    <Select.Option value="demo">Demo</Select.Option>
-                </Select>
-            </Form.Item>
-            <Form.Item label="TreeSelect">
-                <TreeSelect
-                    treeData={[
-                        {
-                            title: 'Light',
-                            value: 'light',
-                            children: [{ title: 'Bamboo', value: 'bamboo' }],
-                        },
-                    ]}
-                />
-            </Form.Item>
-            <Form.Item label="Cascader">
-                <Cascader
-                    options={[
-                        {
-                            value: 'zhejiang',
-                            label: 'Zhejiang',
-                            children: [
-                                {
-                                    value: 'hangzhou',
-                                    label: 'Hangzhou',
-                                },
-                            ],
-                        },
-                    ]}
-                />
-            </Form.Item>
-            <Form.Item label="DatePicker">
-                <DatePicker />
-            </Form.Item>
-            <Form.Item label="InputNumber">
-                <InputNumber />
-            </Form.Item>
-            <Form.Item label="Switch" valuePropName="checked">
-                <Switch />
-            </Form.Item>
-            <Form.Item label="Button">
-                <Button htmlType="submit">Button</Button>
-            </Form.Item>
-        </Form>
+        <>
+            <FormStyled
+                onFinish={handleSubmit}
+                labelCol={{ span: 4 }}
+                wrapperCol={{ span: 14 }}
+                layout="horizontal"
+                initialValues={{ size: componentSize }}
+                size={componentSize as SizeType}
+                style={{ background: 'white' }}
+            >
+                <Form.Item label="Title" name="title">
+                    <Input />
+                </Form.Item>
+                <Form.Item label="Description" name="description">
+                    <TextArea rows={4} />
+                </Form.Item>
+                <Form.Item label="Priority" name="priority">
+                    <Select>
+                        <Select.Option value="low">Low</Select.Option>
+                        <Select.Option value="High">High</Select.Option>
+                        <Select.Option value="medium">Medium</Select.Option>
+                    </Select>
+                </Form.Item>
+                <Form.Item label="Status" name="status">
+                    <Select>
+                        <Select.Option value="notStart">Not Start</Select.Option>
+                        <Select.Option value="completed">Completed</Select.Option>
+                        <Select.Option value="todo">To do</Select.Option>
+                    </Select>
+                </Form.Item>
+                <Form.Item label="Planned end" name="plannedEnd">
+                    <DatePicker picker="date" />
+                </Form.Item>
+                <Form.Item label="Progress" name="progress">
+                    <InputNumber />
+                </Form.Item>
+                <ButtonWrap>
+                    <Button type="primary" htmlType="submit">
+                        Button
+                    </Button>
+                </ButtonWrap>
+            </FormStyled>
+        </>
     );
 };
 

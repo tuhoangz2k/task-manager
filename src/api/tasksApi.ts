@@ -9,4 +9,16 @@ export const tasksApi = {
         const url = `/tasks/${id}`;
         return apiClient.get(url);
     },
+    deleteUserByid(id: number | string) {
+        const url = `/tasks/${id}`;
+        return apiClient.delete(url);
+    },
+    editUserById(id: number | string, data: any) {
+        const url = `/tasks/${id}`;
+        return apiClient.patch(url, data);
+    },
+    addUser(data: any) {
+        const url = `/tasks`;
+        return apiClient.post(url, data);
+    },
 };
